@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCollectionViewCell" id="gTV-IL-0wX" customClass="BannerCollectionViewCell" customModule="Taswak" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="223" height="83"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="223" height="83"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqv-KB-xxd" customClass="CardView" customModule="Taswak" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="213" height="73"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jzL-Rp-Qi7">
+                                <rect key="frame" x="0.0" y="0.0" width="213" height="73"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jzL-Rp-Qi7" firstAttribute="leading" secondItem="Lqv-KB-xxd" secondAttribute="leading" id="IUI-pa-tme"/>
+                            <constraint firstAttribute="bottom" secondItem="jzL-Rp-Qi7" secondAttribute="bottom" id="LnT-SQ-hkB"/>
+                            <constraint firstAttribute="trailing" secondItem="jzL-Rp-Qi7" secondAttribute="trailing" id="OLZ-RM-qTC"/>
+                            <constraint firstItem="jzL-Rp-Qi7" firstAttribute="top" secondItem="Lqv-KB-xxd" secondAttribute="top" id="f3v-0q-Urt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Lqv-KB-xxd" secondAttribute="bottom" constant="5" id="A8F-jd-Gd1"/>
+                <constraint firstAttribute="trailing" secondItem="Lqv-KB-xxd" secondAttribute="trailing" constant="5" id="EaU-oe-dTF"/>
+                <constraint firstItem="Lqv-KB-xxd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="SWD-Ps-xU8"/>
+                <constraint firstItem="Lqv-KB-xxd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="a0j-Lf-ExT"/>
+            </constraints>
+            <size key="customSize" width="223" height="83"/>
+            <connections>
+                <outlet property="bannerImage" destination="jzL-Rp-Qi7" id="Bh8-ds-P29"/>
+            </connections>
+            <point key="canvasLocation" x="229.71014492753625" y="93.415178571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

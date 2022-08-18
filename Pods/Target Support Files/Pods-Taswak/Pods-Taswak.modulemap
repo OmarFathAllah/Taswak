@@ -1,0 +1,6 @@
+framework module Pods_Taswak {
+  umbrella header "Pods-Taswak-umbrella.h"
+
+  export *
+  module * { export * }
+}
