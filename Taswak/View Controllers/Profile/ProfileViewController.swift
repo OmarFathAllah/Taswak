@@ -18,7 +18,6 @@ class ProfileViewController: UIViewController {
         
         registerProfileCell()
         getProfileListDataFRomJSONFile()
-//        observerIsLogedIn()
         changeLoginButtonTitle()
     }
     
@@ -40,26 +39,20 @@ class ProfileViewController: UIViewController {
         } catch let error {
             print(error)
         }
-        
     }
     
     @IBAction func signOutButtonPressed(_ sender: UIButton) {
-        UserDefaults.standard.signedInUserData = nil
-        UserDefaults.standard.IsSignedIn = false
-        let vc = storyboard?.instantiateViewController(identifier: LoginVC.identifier)as! LoginVC
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-        
+        switch sender.currentTitle {
+        case "LogOut":
+            UserDefaults.standard.signedInUserData = nil
+            UserDefaults.standard.IsSignedIn = false
+            alert(title: nil, message: nil)
+        default:
+            goToLoginVC()
+        }
+      
     }
     
-    // MARK: -  adding observer for is loged in notification intialized in Login View Controller
-    func observerIsLogedIn(){
-        NotificationCenter.default.addObserver(self, selector: #selector(changeLoginButtonInProfile), name: NSNotification.Name("isLogedInNotification"), object: nil)
-    }
-    @objc func changeLoginButtonInProfile(){
-        print("notification center done")
-        loginLogoutButton.setTitle("Log Out", for: .normal)
-    }
 //    change login button title
     func changeLoginButtonTitle(){
         if UserDefaults.standard.IsSignedIn{
@@ -69,7 +62,26 @@ class ProfileViewController: UIViewController {
         }
     }
     
-
+//    alert function
+    func alert(title:String?, message:String?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let OkAction = UIAlertAction(title: "Log out", style: .destructive) { (_) in
+            self.goToLoginVC()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            print("cancel action pressed")
+        })
+        alert.addAction(OkAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+//    Go to Login view controller function
+    func goToLoginVC(){
+        let vc = self.storyboard?.instantiateViewController(identifier: LoginVC.identifier)as! LoginVC
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 
 // MARK: -  extension profile table view delegate and datat scource
@@ -88,7 +100,5 @@ extension ProfileViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    
-    
 }
 

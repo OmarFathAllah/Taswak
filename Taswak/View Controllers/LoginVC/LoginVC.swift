@@ -9,8 +9,8 @@ import UIKit
 import ProgressHUD
 
 class LoginVC: UIViewController {
-    var userData: LoginResponse?
     
+    var userData: LoginResponse?
     static let identifier = String(describing: LoginVC.self)
 
     @IBOutlet weak var dontHaveAccountSignUp: UIButton!
@@ -31,7 +31,6 @@ class LoginVC: UIViewController {
         guard let userName = userNameTextField.text else {return}
         guard let password = passwordTextField.text else {return}
             ProgressHUD.show()
-            view.endEditing(true)
             let parameters = ["email":userName, "password":password]
             NetworkService.shared.login(parameters: parameters) { (result) in
                 switch result{
@@ -55,11 +54,6 @@ class LoginVC: UIViewController {
             }
     }
     
-    // MARK: -  is Logged In
-    func isLogedIn(status:Bool)->Bool{
-        return status
-    }
-
     // MARK: -  check for form validation
     func textFieldChange(){
         userNameTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
