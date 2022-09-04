@@ -1,11 +1,11 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## NVActivityIndicatorView
+## IQKeyboardManagerSwift
 
-The MIT License (MIT)
+MIT License
 
-Copyright (c) 2016 Vinh Nguyen
+Copyright (c) 2013-2017 Iftekhar Qurashi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

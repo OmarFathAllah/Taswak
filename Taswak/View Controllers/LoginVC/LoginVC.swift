@@ -27,12 +27,11 @@ class LoginVC: UIViewController {
     }
     
     // MARK: -  Login
-
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        
         guard let userName = userNameTextField.text else {return}
         guard let password = passwordTextField.text else {return}
             ProgressHUD.show()
+            view.endEditing(true)
             let parameters = ["email":userName, "password":password]
             NetworkService.shared.login(parameters: parameters) { (result) in
                 switch result{
@@ -43,9 +42,8 @@ class LoginVC: UIViewController {
 //                    print("user login data is: \(UserDefaults.standard.signedInUserData)")
                     ProgressHUD.dismiss()
                     if loginData.status{
-                        self.isLogedIn(status: loginData.status)
                         UserDefaults.standard.IsSignedIn = loginData.status
-                        let VC = self.storyboard?.instantiateViewController(identifier: "MainTabBarController")
+                        let VC = self.storyboard?.instantiateViewController(identifier: TabBarViewController.identifier)
                         let appDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
                         appDelegate.window?.rootViewController = VC
                     }else{
@@ -62,7 +60,6 @@ class LoginVC: UIViewController {
         return status
     }
 
-    
     // MARK: -  check for form validation
     func textFieldChange(){
         userNameTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
@@ -81,7 +78,6 @@ class LoginVC: UIViewController {
     }
     
     // MARK: -  Setting attributed title for dont have account button
-    
     func setTitleForDontHaveAccountButton() {
         let attributedTitle = NSMutableAttributedString(string: "Dont have account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
@@ -90,15 +86,13 @@ class LoginVC: UIViewController {
     }
 
     // MARK: -  Skip Button
-    
     @IBAction func skipButtonPressed(_ sender: UIButton) {
-        let VC = self.storyboard?.instantiateViewController(identifier: "MainTabBarController")
+        let VC = self.storyboard?.instantiateViewController(identifier: TabBarViewController.identifier)
         let appDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
         appDelegate.window?.rootViewController = VC
     }
     
     // MARK: -  Alert Function
-
     func alert(title:String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAlertButton = UIAlertAction(title: "OK", style: .default, handler: nil)

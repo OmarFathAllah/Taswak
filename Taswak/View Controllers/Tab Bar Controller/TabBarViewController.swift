@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
-    let productDetailVC = ProductDetailViewController()
+    
+    static let identifier = String(describing: TabBarViewController.self)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,11 +19,15 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
         
     }
     
+
+
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        print(tabBarController.selectedIndex)
+//        print(tabBarController.selectedIndex)
         if (tabBarController.selectedIndex == 2) || tabBarController.selectedIndex == 3 {
             if UserDefaults.standard.IsSignedIn{
                 selectedIndex = tabBarController.selectedIndex
+                ProgressHUD.show()
             }else{
                 alert(title: "Alert!", message: "Please Login First to see your items")
             }

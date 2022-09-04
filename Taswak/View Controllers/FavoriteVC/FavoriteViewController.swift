@@ -15,6 +15,7 @@ class FavoriteViewController: UIViewController {
     var favorites:[FavDatum] = []
     let authToken = UserDefaults.standard.signedInUserData?.token
     var selectedProductId:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = false
@@ -39,6 +40,7 @@ class FavoriteViewController: UIViewController {
                 }
             }
         }
+    
     // MARK: -  get all favorite items from API
     func getFavorites(){
         guard let userToken = authToken else { return }
@@ -49,19 +51,19 @@ class FavoriteViewController: UIViewController {
                 self.favorites = favouriteResponse.data.data
                 self.addBadges()
                 self.favoriteCollectionView.reloadData()
-                print(self.favorites)
+                ProgressHUD.dismiss()
+//                print(self.favorites)
             case .failure(let error):
                 print(error)
             }
         }
     }
 
-    
     func registerCell(){
         favoriteCollectionView.register(UINib(nibName: ProductsCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ProductsCollectionViewCell.identifier)
     }
-
 }
+
 // MARK: -  extention uicollection view delegate and data scource
 extension FavoriteViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -85,8 +87,8 @@ extension FavoriteViewController:UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-    
 }
+
 // MARK: -  Product Collection View Cell Delegate to remove item from fgavorites
 extension FavoriteViewController:ProductsCollectionViewCellDelegate{
     func addOrDeleteFavorite() {
@@ -110,6 +112,7 @@ extension FavoriteViewController:ProductsCollectionViewCellDelegate{
             }
         }
     }
+    
     // MARK: -  alert function
     func alert(title:String,message:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

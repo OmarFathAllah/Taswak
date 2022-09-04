@@ -29,9 +29,9 @@ class CartVC: UIViewController {
         cartTableView.dataSource = self
         
         finalizeOrderButton.cornerRadius = 20
-        
+        finalizeOrderButton.isHidden = true
         cellRegister()
-        ProgressHUD.show()
+//        ProgressHUD.show()
     }
     override func viewWillAppear(_ animated: Bool) {
         fetchCartItems()
@@ -62,6 +62,7 @@ class CartVC: UIViewController {
                 self.cartItems = cartProduct
                 self.addBadges()
                 ProgressHUD.dismiss()
+                self.finalizeOrderButton.isHidden = false
                 self.cartTableView.reloadData()
                 let total = Int(cartItemResponse.data.total)
                 self.subTotalCost.text = "Sub Total Amount     \(total) EGP"

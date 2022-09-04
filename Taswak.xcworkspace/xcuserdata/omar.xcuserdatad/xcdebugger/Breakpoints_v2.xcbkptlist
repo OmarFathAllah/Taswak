@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2B87A673-26A7-4EB9-A43D-D12E3DC8B058"
-            shouldBeEnabled = "No"
+            uuid = "ED3349A9-0ED2-487F-A768-8C762F450B59"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Taswak/View Controllers/Tab Bar Controller/TabBarViewController.swift"
+            filePath = "Taswak/View Controllers/Profile/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "tabBarController(_:didSelect:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C64E01E1-C2AF-4397-B20C-1F4FCC4D550A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Taswak/View Controllers/Tab Bar Controller/TabBarViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "tabBarController(_:didSelect:)"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "observerIsLogedIn()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

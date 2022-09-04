@@ -6,8 +6,10 @@ target 'Taswak' do
   use_frameworks!
 
   # Pods for Taswak
-pod 'NVActivityIndicatorView'
 
-pod 'SDWebImage', '~> 5.0'
+
 pod 'ProgressHUD'
+pod 'IQKeyboardManagerSwift'
+pod 'SDWebImage', '~> 5.0'
+
 end

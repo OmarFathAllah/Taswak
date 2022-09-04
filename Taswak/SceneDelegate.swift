@@ -19,11 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        if UserDefaults.standard.isOnBoarded{
-            let homeVC = storyBoard.instantiateViewController(identifier: LoginVC.identifier)
+        if UserDefaults.standard.isOnBoarded && !UserDefaults.standard.IsSignedIn{
+            let loginVc = storyBoard.instantiateViewController(identifier: LoginVC.identifier)
+            window?.rootViewController = loginVc
+        }else if UserDefaults.standard.isOnBoarded && UserDefaults.standard.IsSignedIn{
+            let homeVC = storyBoard.instantiateViewController(identifier: TabBarViewController.identifier)
             window?.rootViewController = homeVC
         }else{
-            let onBoardingVC = storyBoard.instantiateViewController(identifier: onboardingViewController.identefier)
+            let onBoardingVC = storyBoard.instantiateViewController(identifier: OnboardingViewController.identefier)
             window?.rootViewController = onBoardingVC
         }
         window?.makeKeyAndVisible()

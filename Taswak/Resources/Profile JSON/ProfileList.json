@@ -1,0 +1,53 @@
+[
+    
+    {
+        "id": 2,
+        "title": "Account settings",
+        "image": "profileIcon",
+        "VC": "",
+        "Storyboard": ""
+    },
+    {
+        "id": 3,
+        "title": "Adresses",
+        "image": "adressesIcon",
+        "VC": "",
+        "Storyboard": ""
+    },
+    {
+        "id": 4,
+        "title": "Complaints",
+        "image": "complaintsIcon",
+        "VC": "",
+        "Storyboard": ""
+    },
+    {
+        "id": 5,
+        "title": "FAQs",
+        "image": "faqIcon",
+        "VC": "",
+        "Storyboard": ""
+    },
+    {
+        "id": 6,
+        "title": "Notifications",
+        "image": "notificationIcon",
+        "VC": "",
+        "Storyboard": ""
+    },
+    {
+        "id": 7,
+        "title": "Orders",
+        "image": "ordersIcon",
+        "VC": "",
+        "Storyboard": ""
+    },
+    {
+        "id": 1,
+        "title": "Promo Code",
+        "image": "promoCodeIcon",
+        "VC": "ProfileViewController",
+        "Storyboard": "SettingsStoryboard"
+    }
+]
+

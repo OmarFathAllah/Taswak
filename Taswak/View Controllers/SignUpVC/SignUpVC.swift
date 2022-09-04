@@ -22,6 +22,11 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameTF.delegate = self
+        phoneTF.delegate = self
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        
         signUpButton.isEnabled = false
         signUpButton.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         setTitleForHaveAccountButton()
@@ -37,7 +42,10 @@ class SignUpVC: UIViewController {
     // MARK: -  SignUp Button Pressed
 
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        
+        registerNewAccount()
+    }
+//    register new account
+    func registerNewAccount(){
         guard let name = nameTF.text,name.count > 0 else { return }
         guard let phone = phoneTF.text,phone.count > 0 else { return }
         guard let email = emailTF.text,email.count > 0 else { return }
@@ -54,6 +62,9 @@ class SignUpVC: UIViewController {
                 switch registerResponse.status {
                 case true:
                     self.alert(title: "Done", message: registerResponse.message)
+                    let VC = self.storyboard?.instantiateViewController(identifier: TabBarViewController.identifier)
+                    let appDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
+                    appDelegate.window?.rootViewController = VC
                 case false:
                     self.alert(title: "Error", message: registerResponse.message)
                 }
@@ -62,9 +73,10 @@ class SignUpVC: UIViewController {
                 print("Failed to register: \(error)")
             }
         }
+        
     }
+    
     // MARK: -  Lestining to any editing change in all text fields
-
     func textFieldChange(){
         nameTF.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         phoneTF.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
@@ -84,7 +96,6 @@ class SignUpVC: UIViewController {
     }
     
     // MARK: -  setting Title for Already have account?  SignIn Button
-    
     func setTitleForHaveAccountButton() {
         let attributedTitle = NSMutableAttributedString(string: "Already Have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
@@ -93,16 +104,29 @@ class SignUpVC: UIViewController {
     }
 
     // MARK: -  Alert Function Not used in our code
-
     func alert(title:String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAlertButton = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAlertButton)
         present(alert, animated: true, completion: nil)
     }
+    
     // MARK: -  to dismiss current view to go to login view
-
     @IBAction func alreadyHaveAccountSignInButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: -  UItext field delegate implementaion
+extension SignUpVC:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        registerNewAccount()
+        return true
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+
