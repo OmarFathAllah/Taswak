@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     var categories : [Category] = []
     var products:[OneProduct] = []
     var banners:[Banner] = []
-    var currentIndex = 5
+    var currentIndex = 0
     var timer: Timer?
 
 
@@ -78,8 +78,9 @@ class HomeViewController: UIViewController {
     
     @objc func updateCellImage(){
         if currentIndex <= banners.count - 1 {
-            currentIndex += 1
             bannersCollectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
+            currentIndex += 1
+            print(currentIndex)
         }else{
             currentIndex = 0
         }
